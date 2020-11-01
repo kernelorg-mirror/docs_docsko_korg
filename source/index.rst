@@ -15,6 +15,7 @@ Git and related processes
    gitolite/index
    gitolite/2fa
    gitolite/track_set
+   gitolite/transparency-log
    nitrokey
    cgit-meta-data
    git-url-shorteners
