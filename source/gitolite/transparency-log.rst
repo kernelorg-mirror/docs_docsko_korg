@@ -2,8 +2,8 @@ Gitolite transparency log
 =========================
 All git-receive operations are logged in the transparency log, published
 at https://git.kernel.org/pub/scm/infra/transparency-logs/gitolite/git/.
-The repository in in the public-inbox v2 format and each operation is
-recorded as a separate RFC822 message in the YAML format.
+The repository is in the public-inbox v2 format and each operation is
+recorded as a separate RFC822 message with the body in YAML format.
 
 * https://public-inbox.org/public-inbox-v2-format.html
 
@@ -13,16 +13,13 @@ activity to the kernel.org source repositories.
 
 Sample record
 -------------
-Below is the annotated sample record. It can be viewed in the log at the
-following URL:
-
-* https://git.kernel.org/pub/scm/infra/transparency-logs/gitolite/git/1.git/plain/m?id=aca1687845b64383ec52379c86b10eaa9865c1fa
+Below is the annotated sample record.
 
 ::
 
     Content-Type: multipart/mixed; boundary="===============9216280479104659071=="
     MIME-Version: 1.0
-    From: Gitolite Activity Feed <devnull@kernel.org>
+    From: Gitolite <devnull@kernel.org>
     Subject: post-receive: pub/scm/linux/kernel/git/mricon/hook-test
     Date: Sun, 01 Nov 2020 14:30:04 -0000
 
@@ -38,8 +35,8 @@ of any of the commits.
     MIME-Version: 1.0
     Content-Transfer-Encoding: 7bit
 
-If there are any attachments, the message will be MIME-formatted,
-otherwise it will be a text/plain message.
+If there are any attachments, the message will be multipart/mixed,
+otherwise it will be a simple text/plain message.
 
 ::
 
@@ -47,20 +44,6 @@ otherwise it will be a text/plain message.
     service: git-receive-pack
     repo: pub/scm/linux/kernel/git/mricon/hook-test
     user: mricon
-    remote_ip: xHVq6qQJwVPokJmgTq0F/d+8fco=
-
-The ``remote_ip`` field is calculated the following way:
-``base64(sha1("{secret}{username}{actual_remote_ip}"))``. The ``{secret}`` is
-a 32-character long alphanumeric string and is rotated daily at 00:00
-UTC. All rotated secrets are logged internally and can be used for
-forensic purposes at a later date.
-
-This scheme was chosen to preserve user privacy, but provide a way to
-identify when pushes were received from different sources within the
-boundaries of the same calendar day.
-
-::
-
     git_push_cert_status: G
 
 If the push was signed, the ``git_push_cert_status`` field will be
@@ -78,7 +61,7 @@ present and the push certificate will be attached as a separate file
 
 The ``changes`` field is an array of values per each of the refs pushed
 during the single git-receive-pack invocation. The ``log`` field is the
-enumeration of commits from the previous ref to the new ref. If it is
+enumeration of commits from the previous tip to the new tip. If it is
 less than 1024KB in size, the contents will be listed in the YAML body
 itself. If larger, they will be attached as a separate file, with the
 name of the attached file listed instead.
@@ -119,7 +102,9 @@ would like to help hedge against this risk, you are invited to sign your
 pushes.
 
 You can enable push signing by adding the following to your
-``.git/config`` (or ``~/.gitconfig``)::
+``.git/config`` (or ``~/.gitconfig``, if you want to enable this
+globally, but keep in mind that this will result in errors or warning
+messages when you push to remotes that do not support signed pushes)::
 
     [push]
         gpgSign = if-asked
@@ -128,4 +113,5 @@ See ``git-push`` for more information on this feature:
 
 * https://git-scm.com/docs/git-push#Documentation/git-push.txt---signedtruefalseif-asked
 
-Note: we only add the certificates to the transparency log at this time.
+Note: we only add the certificates to the transparency log at this time
+without applying any other kinds of tests or making any allow/deny decisions.
