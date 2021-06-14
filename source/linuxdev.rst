@@ -3,7 +3,7 @@
 
 .. note::
 
-   This is an BETA offering. Currently, it is only available to people
+   This is a BETA offering. Currently, it is only available to people
    listed in the MAINTAINERS file. We hope to be able to offer it to
    everyone else who can show demonstrate an ongoing history of
    contributions to the Linux kernel (patches, git commits, mailing list
@@ -31,17 +31,17 @@ Who qualifies for a linux.dev address
 Please check that all of the below applies to you:
 
 1. You have an actual need to have a mailbox that is compatible with
-   git-send-email and IMAP mail clients. *This is NOT a vanity email
-   address service* -- it exists to help developers do their work. If you
+   git-send-email and IMAP mail clients. **This is NOT a vanity email
+   address service** -- it exists to help developers do their work. If you
    really want a vanity address, you can `get a lifetime linux.com
    forwarding alias`_ for a very reasonable price. Alternatively, Migadu
    will happily host your personal domain for a low annual fee.
-2. You are listed in the MAINTAINERS file as a M: (maintainer) or R:
+2. **You are listed in the MAINTAINERS file** as a M: (maintainer) or R:
    (reviewer), OR
-3. (NOT YET AVAILABLE) You can demonstrate that you have ongoing history
+3. *(NOT YET AVAILABLE) You can demonstrate that you have ongoing history
    with Linux kernel development, such as prior git commits in your
    name, mailing list discussions accessible via lore.kernel.org, or
-   similar.
+   similar.*
 
 .. _`get a lifetime linux.com forwarding alias`: https://docs.linuxfoundation.org/lfx/my-profile/purchasing-linux-email
 
@@ -49,13 +49,13 @@ Rules and restrictions
 ----------------------
 Please make sure that you're okay with all of the following:
 
-1. *You will use this service for Linux kernel work.* This doesn't mean
+1. **You will use this service for Linux kernel work.** This doesn't mean
    you can't use it for an occasional email that has nothing to do with
    Linux, but please keep it within reason.
-2. *You will not use this service for sending spam or in violation of the
-   `Code of Conduct`_.* Such behavior will result in immediate
+2. **You will not use this service for sending spam or in violation of the
+   `Code of Conduct`_.** Such behavior will result in immediate
    suspension or termination of your account.
-3. *Your address will be created as givenname.familyname@linux.dev*,
+3. **Your address will be created as givenname.familyname@linux.dev**,
    unless you can convincingly demonstrate that this does not apply to
    your individual case (e.g. you do not have a family name following
    common Western tradition; or you prefer your family name to be listed
@@ -63,21 +63,21 @@ Please make sure that you're okay with all of the following:
    personal jeopardy). The hope is to exactly match what you put in your
    git commit "Author" info. Collisions will be handled on a
    case-by-case basis with the hope to satisfy all parties involved.
-4. *You will not use this address to subscribe to high-volume mailing
-   lists* (LKML, netdev, etc). Migadu applies daily limits on the number
+4. **You will not use this address to subscribe to high-volume mailing
+   lists** (LKML, netdev, etc). Migadu applies daily limits on the number
    of incoming and outgoing messages, so violating this request may
    result in mail being held/throttled for all users of linux.dev. We
    will be providing alternative ways to "subscribe" to mailing lists
    hosted on lore.kernel.org in the near future that don't require
    traditional SMTP delivery (or you can already use a `NNTP reader`_
    for this purpose).
-5. *You need to already have another email address in order to apply for
-   this service* -- which is a bit of a chicken and egg situation, but
+5. **You need to already have another email address in order to apply for
+   this service** -- which is a bit of a chicken and egg situation, but
    it is what it is. This service is not intended to be your primary
    online identity, merely one that is friendly for Linux development.
 6. We hope to provide this service for as long as email is used for
-   Linux development, but *we offer no guarantee that this service will
-   be around forever*.
+   Linux development, but **we offer no guarantee that this service will
+   be around forever**.
 
 .. _`Code of Conduct`: https://www.kernel.org/code-of-conduct.html
 .. _`NNTP reader`: nntp://nntp.lore.kernel.org/
