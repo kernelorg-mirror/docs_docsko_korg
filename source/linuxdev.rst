@@ -5,9 +5,9 @@
 
    This is a BETA offering. Currently, it is only available to people
    listed in the MAINTAINERS file. We hope to be able to offer it to
-   everyone else who can show demonstrate an ongoing history of
-   contributions to the Linux kernel (patches, git commits, mailing list
-   discussions, etc).
+   everyone else who can demonstrate an ongoing history of contributions
+   to the Linux kernel (patches, git commits, mailing list discussions,
+   etc).
 
 Linux development depends on the ability to send and receive emails.
 Unfortunately, it is common for corporate gateways to post-process both
