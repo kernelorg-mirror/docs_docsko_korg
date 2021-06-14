@@ -28,6 +28,7 @@ Email and related
 
    mail
    remail
+   linuxdev
    lore
 
 Other services
