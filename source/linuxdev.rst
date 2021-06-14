@@ -37,7 +37,7 @@ Please check that all of the below applies to you:
    forwarding alias`_ for a very reasonable price. Alternatively, Migadu
    will happily host your personal domain for a low annual fee.
 2. **You are listed in the MAINTAINERS file** as a M: (maintainer) or R:
-   (reviewer), OR
+   (reviewer), **OR**
 3. *(NOT YET AVAILABLE) You can demonstrate that you have ongoing history
    with Linux kernel development, such as prior git commits in your
    name, mailing list discussions accessible via lore.kernel.org, or
@@ -53,8 +53,8 @@ Please make sure that you're okay with all of the following:
    you can't use it for an occasional email that has nothing to do with
    Linux, but please keep it within reason.
 2. **You will not use this service for sending spam or in violation of the
-   `Code of Conduct`_.** Such behavior will result in immediate
-   suspension or termination of your account.
+   Code of Conduct** (`see here`_). Such behavior will result in
+   immediate suspension or termination of your account.
 3. **Your address will be created as givenname.familyname@linux.dev**,
    unless you can convincingly demonstrate that this does not apply to
    your individual case (e.g. you do not have a family name following
@@ -79,7 +79,7 @@ Please make sure that you're okay with all of the following:
    Linux development, but **we offer no guarantee that this service will
    be around forever**.
 
-.. _`Code of Conduct`: https://www.kernel.org/code-of-conduct.html
+.. _`see here`: https://www.kernel.org/code-of-conduct.html
 .. _`NNTP reader`: nntp://nntp.lore.kernel.org/
 
 How to apply
