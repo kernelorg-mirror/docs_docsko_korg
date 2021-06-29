@@ -1,14 +1,5 @@
-(BETA) linux.dev mailbox hosting
-================================
-
-.. note::
-
-   This is a BETA offering. Currently, it is only available to people
-   listed in the MAINTAINERS file. We hope to be able to offer it to
-   everyone else who can demonstrate an ongoing history of contributions
-   to the Linux kernel (patches, git commits, mailing list discussions,
-   etc).
-
+linux.dev mailbox hosting
+=========================
 Linux development depends on the ability to send and receive emails.
 Unfortunately, it is common for corporate gateways to post-process both
 outgoing and incoming messages with the purposes of adding lengthy legal
@@ -38,10 +29,9 @@ Please check that all of the below applies to you:
    will happily host your personal domain for a low annual fee.
 2. **You are listed in the MAINTAINERS file** as a M: (maintainer) or R:
    (reviewer), **OR**
-3. *(NOT YET AVAILABLE) You can demonstrate that you have ongoing history
-   with Linux kernel development, such as prior git commits in your
-   name, mailing list discussions accessible via lore.kernel.org, or
-   similar.*
+3. **You can demonstrate that you have ongoing history with Linux kernel
+   development**, such as prior git commits in your name, mailing list
+   discussions accessible via lore.kernel.org, or similar.
 
 .. _`get a lifetime linux.com forwarding alias`: https://docs.linuxfoundation.org/lfx/my-profile/purchasing-linux-email
 
@@ -91,11 +81,25 @@ helpdesk@kernel.org using the following pattern::
     Subject: firstname.lastname@linux.dev account request
 
     Full name: [Firstname Lastname]
-    Contact address: [myotheraddress@example.org]
+    Canonical address: [foo@example.org]
 
     Reasons for needing this account:
     [Describe why your current email situation is not suitable for
     kernel work.]
 
+Approval process
+----------------
+To verify your request, we will perform the following actions:
+
+1. We will first look in MAINTAINERS for your canonical address
+2. Then, we'll check linux-next for "git log --author=[canonical address]"
+3. Finally, we'll search lore.kernel.org/lkml/ using
+   "f:[canonical address]"
+
+If none of these checks are successful, your request will be denied. If
+we find matches on lore.kernel.org, but they are not substantial in
+nature (e.g. no positive responses to your contributions), then your
+request may be denied.
+
 If your request is approved, you will receive an invitation link at the
-address you specify.
+contact address you specified.
