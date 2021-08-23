@@ -24,16 +24,6 @@ changed. If your patches were tweaked for variable naming, comments,
 whitespace, or other stylistic purposes, then the bot will no longer be
 able to make a reasonable match.
 
-Opt-in notifications for Next/Mainline
---------------------------------------
-.. note:: This is a beta feature
-
-You can opt in to receive notifications for when your patches are
-applied to linux-next or mainline. Follow the instructions on the
-`feature announcement page`_.
-
-.. _`feature announcement page`: https://www.kernel.org/get-notifications-for-your-patches.html
-
 Source code
 -----------
 You can find the source for the bot in the helpers repository:
