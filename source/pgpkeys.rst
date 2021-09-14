@@ -94,7 +94,7 @@ Submitting keys to the keyring
 
 For now, the easiest way to submit your key is to run the following::
 
-    gpg -a --export your@email.addr | mail -s your@email.addr keys@kernel.org
+    gpg -a --export your@email.addr | mail -s your@email.addr keys@linux.kernel.org
 
 If your ``mail`` command does not deliver mail properly, you can export
 to a file and attach that file to the message instead::
