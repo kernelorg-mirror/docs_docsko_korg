@@ -101,5 +101,5 @@ to a file and attach that file to the message instead::
 
     gpg -a --export your@email.addr > export.asc
 
-Note, that anything you send to keys@kernel.org will be archived
+Note, that anything you send to keys@linux.kernel.org will be archived
 on https://lore.kernel.org/keys for record-keeping purposes.
