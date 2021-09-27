@@ -10,12 +10,15 @@ Requesting a new wiki site
    :doc:`docs`, and strongly consider if it's a better fit than having a
    wiki.
 
-We provide both mediawiki and dokuwiki sites -- our preferred solution
-being dokuwiki as it is more lightweight and looks cleaner. To request a
-new wiki site, please send the following information to
+If you do have a convincing reason to have wiki site, we may be able to
+host one for you. Please send the following information to
 helpdesk@kernel.org:
 
-- Desired wiki software: Dokuwiki (preferred) or Mediawiki (discouraged)
 - Name of the site: [foo.wiki.kernel.org]
-- Reasons for the site: [Kernel module documentation, etc]
-- LFID of the administrators: [to obtain your LFID, create an account on https://identity.linuxfoundation.org/ ]
+- Purpose of the site: [Foo kernel module documentation]
+- Reasons why it must be a wiki: [Migrating existing dokuwiki]
+- Contact address for spam reports and complaints: [foo@example.com]
+
+.. note::
+
+   We only support new dokuwiki deployments.
