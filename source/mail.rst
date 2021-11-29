@@ -20,17 +20,16 @@ This will produce the following output::
 
     Example mutt settings:
 
-        set smtp_url     = "smtp://[username]@mail.kernel.org:587/"
+        set smtp_url     = "smtps://[username]@mail.kernel.org:465/"
         set smtp_pass    = "[randomstring]"
         set from         = "[username]@kernel.org"
-        set ssl_starttls = yes
 
     Example git config settings:
 
         [sendemail]
                 smtpserver     = mail.kernel.org
-                smtpserverport = 587
-                smtpencryption = tls
+                smtpserverport = 465
+                smtpencryption = ssl
                 from           = [username]@kernel.org
                 smtpuser       = [username]
                 smtppass       = [randomstring]
