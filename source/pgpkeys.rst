@@ -92,14 +92,25 @@ timer instead::
 Submitting keys to the keyring
 ------------------------------
 
-For now, the easiest way to submit your key is to run the following::
-
-    gpg -a --export your@email.addr | mail -s your@email.addr keys@linux.kernel.org
-
-If your ``mail`` command does not deliver mail properly, you can export
-to a file and attach that file to the message instead::
+If your key is *not already* in the kernel.org keyring, do the
+following::
 
     gpg -a --export your@email.addr > export.asc
 
+Send a message to keys@linux.kernel.org with that file as attachment.
+
+You should also upload that file to https://keys.openpgp.org/upload/ to
+have it listed on the openpgp.org keyserver.
+
 Note, that anything you send to keys@linux.kernel.org will be archived
 on https://lore.kernel.org/keys for record-keeping purposes.
+
+Updating keys in the keyring
+----------------------------
+
+If you've made any changes to your key, please export it again::
+
+    gpg -a --export your@email.addr > export.asc
+
+Then upload export.asc to https://keys.openpgp.org/upload/. We perform
+weekly updates to pgpkeys.git with the latest key data from keys.openpgp.org.
