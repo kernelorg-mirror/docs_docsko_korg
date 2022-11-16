@@ -52,12 +52,11 @@ If you are sending PGP-signed mail using your username@kernel.org email
 address, you should add that UID to the public key (should be the same
 key you used to apply for your kernel.org account)::
 
-    gpg2 --quick-add-uid [keyid] 'Firstname Lastname <username@kernel.org>'
-    gpg2 --send-keys [keyid]
+    gpg --quick-add-uid [keyid] 'Firstname Lastname <username@kernel.org>'
 
 To find out your keyid, you can run::
 
-    gpg2 --list-secret-keys
+    gpg --list-secret-keys
 
 Your keyid (either the full fingerprint, or the last 16 characters)
 should be listed right under the sec line.
@@ -75,7 +74,7 @@ will be automatically marked as trusted.
 To check which key we have in the WKD, you can run the following
 command::
 
-    GNUPGHOME=$(mktemp -d) gpg2 --auto-key-locate wkd --locate-keys [username]@kernel.org 
+    GNUPGHOME=$(mktemp -d) gpg --auto-key-locate wkd --locate-keys [username]@kernel.org
 
 The output should display which key ID was retrieved from the WKD. If
 instead you see an error message like this::
@@ -93,6 +92,7 @@ helpdesk@kernel.org.
 
 Changing your forwarding address
 --------------------------------
+
 If you have a kernel.org ssh account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -30,13 +30,21 @@ web of trust, your account will be issued without delay.
 
 .. _`MAINTAINERS`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS
 
+Creating a PGP key
+~~~~~~~~~~~~~~~~~~
+If you do not already have a PGP key, or if you already have one but
+aren't comfortable with using GnuPG tools, you can read the **Kernel
+Maintainer PGP guide**:
+
+* https://docs.kernel.org/process/maintainer-pgp-guide.html
+
 Exporting your public key
 -------------------------
 We no longer rely on keyservers for signature information, so please
 attach a copy of your public key to the request. You can generate it
 using the following command::
 
-    gpg2 -a --export --export-options export-clean [YOURKEYID] > export.asc
+    gpg -a --export --export-options export-clean [YOURKEYID] > export.asc
 
 PGP Web of Trust
 ----------------
@@ -85,14 +93,14 @@ Procedure for the signee
 3. During the conference, establish your identity with the signers.
 4. When everyone is ready, read your public key fingerprint out loud
    (you can display it using ``gpg --fingerprint [your@address]``).
-5. Make sure everyone has verified the fingerprint.
+5. Make sure everyone has verified your key fingerprint.
 6. Finish the call.
-7. Wait for the signed key to be send to you.
+7. Wait to receive your signed key from all signers.
 8. Import the signatures into your keyring using ``gpg --import
    export.asc``.
-9. Once you have received all the signatures, export the public key
+9. Once you have received all the signatures, re-export your public key
    using ``gpg --export -a -o signed.asc [your@address]``.
-10. Submit the exported key with your account request.
+10. Submit ``signed.asc`` with your account request.
 
 Procedure for the signers
 ~~~~~~~~~~~~~~~~~~~~~~~~~
