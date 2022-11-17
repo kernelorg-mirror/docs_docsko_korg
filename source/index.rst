@@ -51,6 +51,7 @@ Social accounts
    :maxdepth: 1
 
    people
+   social
 
 Getting support
 ---------------
