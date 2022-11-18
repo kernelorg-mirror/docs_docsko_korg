@@ -103,3 +103,26 @@ request may be denied.
 
 If your request is approved, you will receive an invitation link at the
 contact address you specified.
+
+Filtering Email
+---------------
+If you don't want to filter your email through your local client, Migadu_
+supports server-side SIEVE_ filtering. This can be configured with various
+mail clients, or through things like sieveshell_. For example::
+
+    $ cat list-admin-reject.sieve
+    require ["regex", "fileinto"];
+    if header :regex "from" "^some-mailing-list-reject-" {
+      fileinto "some-mailing-list-admin";
+    }
+    $ sieveshell --user your.name@linux.dev --passwd '...' --use-tls imap.migadu.com
+    > put list-admin-reject.sieve
+    OK
+    > list
+    list-admin-reject.sieve
+    > activate list-admin-reject.sieve
+    OK
+    > quit
+
+.. _SIEVE: https://en.wikipedia.org/wiki/Sieve_(mail_filtering_language)
+.. _sieveshell: https://www.cyrusimap.org/imap/reference/manpages/usercommands/sieveshell.html
