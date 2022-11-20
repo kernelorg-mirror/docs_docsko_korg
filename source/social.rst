@@ -8,26 +8,28 @@ Please read the `about`_ page for terms of service and the privacy
 policy.
 
 .. _`pleroma`: https://pleroma.social/
+.. _`about`: https://social.kernel.org/about/
 
-Requesting an invite
---------------------
-This service is offered to anyone with a kernel.org account, or anyone
-with an entry in the MAINTAINERS file. If you do not fall under one of
-these two categories, you can get someone else to "sponsor" your
-request.
-
-If you already have a kernel.org account, you can display the invite
-link by running the following command::
+If you have a kernel.org account
+--------------------------------
+If you already have a kernel.org account and would like to register on
+social.kernel.org, you can display the invite link by running the
+following command::
 
     ssh git@gitolite.kernel.org social invite
 
-With all other cases, please follow the instructions on the `about`_
-page to submit a request to helpdesk.
+.. note::
 
-.. _`about`: https://social.kernel.org/about/
+   Please only create an account if you actually intend to use it. If
+   you already have an established presence on the Fediverse elsewhere,
+   we encourage you to continue using it and just set the webfinger
+   pointer as described below.
 
-If you aren't in MAINTAINERS
-----------------------------
+If you DON'T have a kernel.org account
+--------------------------------------
+This service is offered to anyone with an entry in the `MAINTAINERS`_
+file, so you can qualify even if you don't have a kernel.org account.
+
 Note, that there is nothing inherently special about the
 social.kernel.org instance. There are many fediverse-enabled platforms
 providing free registrations, many of which are specifically dedicated
@@ -38,6 +40,18 @@ to technology and Free Software communities. Here are some examples:
 * https://hachyderm.io
 
 Many others exist if these are not suitable for your needs.
+
+Nonetheless, if you are convinced that social.kernel.org is the best
+place for your account, please send a request to helpdesk@kernel.org,
+using the following template::
+
+    To: helpdesk@kernel.org
+    Subject: social.kernel.org account request for [Your Name]
+
+    I would like a social.kernel.org account because I am the
+    maintainer of the [kernel subsbystem].
+
+.. _`MAINTAINERS`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS
 
 Setting your webfinger
 ----------------------
@@ -64,3 +78,46 @@ To see what it is currently set to (if anything)::
     ssh git@gitolite.kernel.org social show
 
 With all other questions, please contact helpdesk@kernel.org.
+
+Recommended client apps
+-----------------------
+If you are looking for a client application to use with the
+social.kernel.org instance, we can recommend the following options.
+
+.. note::
+
+  Since social.kernel.org is running on Pleroma, not Mastodon, some apps
+  may not be fully compatible. The ones listed below have been tried and
+  found working.
+
+Android
+~~~~~~~
+
+* Husky_
+* Fedilab_
+
+Another perfectly suitable option is to access it via your regular web
+browser or to set up a lite app via Hermit_.
+
+.. _Husky: https://f-droid.org/en/packages/su.xash.husky/
+.. _Fedilab: https://f-droid.org/en/packages/fr.gouv.etalab.mastodon/
+.. _Hermit: https://play.google.com/store/apps/details?id=com.chimbori.hermitcrab
+
+GUI
+~~~
+
+* Whalebird_
+
+Another popular GUI application is Tootle, but it is known not to work
+with Pleroma (and is unmaintained).
+
+.. _Whalebird: https://flathub.org/apps/details/social.whalebird.WhalebirdDesktop
+
+Console
+~~~~~~~
+
+* Toot_
+* Tut_
+
+.. _Toot: https://github.com/ihabunek/toot
+.. _Tut: https://github.com/RasmusLindroth/tut
