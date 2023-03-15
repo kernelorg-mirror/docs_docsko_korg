@@ -2,12 +2,12 @@ social.kernel.org
 =================
 If you are looking for a fediverse-enabled microblogging platform, there
 is a hosted solution offered at https://social.kernel.org/, running
-`pleroma`_.
+`Akkoma`_.
 
 Please read the `about`_ page for terms of service and the privacy
 policy.
 
-.. _`pleroma`: https://pleroma.social/
+.. _`Akkoma`: https://akkoma.social/
 .. _`about`: https://social.kernel.org/about/
 
 If you have a kernel.org account
@@ -86,7 +86,7 @@ social.kernel.org instance, we can recommend the following options.
 
 .. note::
 
-  Since social.kernel.org is running on Pleroma, not Mastodon, some apps
+  Since social.kernel.org is running on Akkoma, not Mastodon, some apps
   may not be fully compatible. The ones listed below have been tried and
   found working.
 
@@ -109,7 +109,7 @@ GUI
 * Whalebird_
 
 Another popular GUI application is Tootle, but it is known not to work
-with Pleroma (and is unmaintained).
+with Akkoma (and is unmaintained).
 
 .. _Whalebird: https://flathub.org/apps/details/social.whalebird.WhalebirdDesktop
 
