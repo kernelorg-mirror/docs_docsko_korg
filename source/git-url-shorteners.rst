@@ -42,21 +42,37 @@ Examples
 * https://git.kernel.org/torvalds/p/4f27395
 * https://git.kernel.org/tip/tip/p/2923b27
 
-/h/ for Heads
--------------
+/h/ for Head Trees
+------------------
 
 ::
 
-    /[name]/h/[head]        -> /pub/scm/linux/kernel/git/[name]/linux.git/log/?h=[head]
-    /[name]/[repo]/h/[head] -> /pub/scm/linux/kernel/git/[name]/[repo].git/log/?h=[head]
+    /[name]/h/[head]        -> /pub/scm/linux/kernel/git/[name]/linux.git/tree/?h=[head]
+    /[name]/[repo]/h/[head] -> /pub/scm/linux/kernel/git/[name]/[repo].git/tree/?h=[head]
 
 If *[repo]* is omitted, "linux.git" is assumed.
 
 Examples
 ~~~~~~~~
 
-* https://git.kernel.org/s390/h/for-linus
+* https://git.kernel.org/clk/h/clk-next
 * https://git.kernel.org/next/linux-next/h/stable
+
+/l/ for Head Logs
+-----------------
+
+::
+
+    /[name]/l/[head]        -> /pub/scm/linux/kernel/git/[name]/linux.git/log/?h=[head]
+    /[name]/[repo]/l/[head] -> /pub/scm/linux/kernel/git/[name]/[repo].git/log/?h=[head]
+
+If *[repo]* is omitted, "linux.git" is assumed.
+
+Examples
+~~~~~~~~
+
+* https://git.kernel.org/clk/l/clk-next
+* https://git.kernel.org/next/linux-next/l/stable
 
 /d/ and /ds/ for diff and diffstat
 ----------------------------------
