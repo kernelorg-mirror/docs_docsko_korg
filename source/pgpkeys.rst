@@ -41,7 +41,7 @@ First, you should assign full trust to Linus's key (after importing it
 into your keyring)::
 
     $ gpg --import keys/79BE3E4300411886.asc
-    $ gpg --edit-key 79BE3E4300411886
+    $ gpg --edit-key ABAF11C65A2970B130ABE3C479BE3E4300411886
     gpg> trust
     gpg> 4
     gpg> q
