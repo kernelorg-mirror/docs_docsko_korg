@@ -8,9 +8,12 @@ outgoing mail SMTP.
 
 Sending outgoing mail
 ---------------------
-You may wish to use our mail server to send out email -- due to company
-policies or whatnot. First, you will need to obtain your SMTP password
-using the following command::
+If you want to use your kernel.org address for sending outgoing mail,
+you *must* use our SMTP server, otherwise your messages will be rejected
+by many providers due to DMARC policy violations.
+
+First, you will need to obtain your SMTP password using the following
+command::
 
     ssh git@gitolite.kernel.org getsmtppass
 
