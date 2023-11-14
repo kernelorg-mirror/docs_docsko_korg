@@ -44,7 +44,7 @@ We no longer rely on keyservers for signature information, so please
 attach a copy of your public key to the request. You can generate it
 using the following command::
 
-    gpg -a --export --export-options export-clean [YOURKEYID] > export.asc
+    gpg -a --export [YOURKEYID] > export.asc
 
 PGP Web of Trust
 ----------------
