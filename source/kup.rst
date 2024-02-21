@@ -22,7 +22,6 @@ If you have not yet set up your ssh access, first see :doc:`access`.
 
 Obtaining kup
 -------------
-
 Kup is packaged for most distributions and is probably installable using
 your distribution's package management tools. For example, on Fedora it
 is installable using::
@@ -39,7 +38,6 @@ kup::
 
 Configuring kup
 ---------------
-
 Set your ``$HOME/.kuprc`` as follows (**requires kup >= 0.3.6**)::
 
     host = git@gitolite.kernel.org
@@ -68,7 +66,6 @@ further assistance.
 
 Uploading with kup
 ------------------
-
 Please carefully read the manpages provided by kup to familiarize
 yourself with the procedure::
 
@@ -92,7 +89,32 @@ and will be available on http://kernel.org/pub after a few minutes.
 
 Permissions
 -----------
-
 If you find that some directories do not have the correct permissions,
 or if you need to set up groups in order to allow multiple developers
 write access, please send a request to helpdesk@kernel.org.
+
+Auto-publishing with git-archive-signer
+---------------------------------------
+In addition to direct kup usage, we also provide an automated mechanism
+to publish archives from repository tags. The process uses kup behind
+the scenes, but allows skipping most of the above steps once it is
+properly set up.
+
+To start using this method:
+
+1. Download the git-archive-signer_ script from the helpers tree. You
+   should not need to edit that file for it to work in most situations.
+2. Sign the tag (or tags) that you would like published.
+3. Send a request to helpdesk@kernel.org asking to enable
+   auto-publishing automation. Include the following details:
+
+   * the git tree on git.kernel.org to use as origin
+   * the kernel.org username of each person who will be publishing the
+     releases
+   * the location on www.kernel.org/pub where the results should be
+     published.
+
+4. The backend job runs every 5 minutes and you will get a notification
+   by email if your job has succeeded or failed.
+
+.. _git-archive-signer: https://git.kernel.org/pub/scm/linux/kernel/git/mricon/korg-helpers.git/plain/git-archive-signer
