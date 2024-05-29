@@ -49,6 +49,26 @@ authenticated SMTP sending. The automatically generated random password
 is not used for anything else, so there is little concern in leaving it
 cleartext in your configuration files.
 
+Configuring msmtp
+~~~~~~~~~~~~~~~~~
+If you routinely work offline, it can be useful to configure msmtp with
+queueing. First, add this to your ``~/.msmtprc``::
+
+    account korg
+    port 465
+    tls on
+    tls_starttls off
+    host mail.kernel.org
+    from [username]@kernel.org
+    auth on
+    user [username]
+    password [randomstring]
+    account default : korg
+
+You can then use the ``msmtp-enqueue.sh`` and ``msmtp-runqueue.sh``
+scripts that ship with msmtp. See the documentation that accompanies
+msmtp for details.
+
 Adding a kernel.org UID to your PGP key
 ---------------------------------------
 If you are sending PGP-signed mail using your username@kernel.org email
