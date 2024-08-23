@@ -7,8 +7,8 @@
    so we strongly recommend that instead of setting up TOTP/HOTP you
    switch to using the Nitrokey for your ssh access instead.
 
-HOTP/TOTP ip-based push validation
-----------------------------------
+HOTP/TOTP ssh session push validation
+-------------------------------------
 
 .. note:: This is entirely opt-in.
 
@@ -16,13 +16,9 @@ HOTP/TOTP ip-based push validation
 Command                         Summary
 =============================== =======================================================================
 ``enroll [mode]``               Enroll with 2-factor authentication (mode=totp or yubikey)
-``val [token]``                 Validate your current IP address for 24 hours
 ``val-session [token]``         Validate your current ssh ControlMaster session
-``val-for-days [days] [token]`` Validate your current IP address for arbitrary number of days (max=30)
-``val-subnet [/cidr] [token]``  Validate a larger subnet for 8 hours
-``list-val [all]``              List current validations ("all" includes expired)
-``inval [ip-address]``          Invalidate specific IP address (can be "myip", "all" or "all purge")
-``isval``                       Check if your current IP is validated
+``val [token]``                 Alias for val-session command
+``isval``                       Check if your current session is validated
 ``unenroll [token]``            Unenroll from 2-factor authentication
 =============================== =======================================================================
 
@@ -30,7 +26,7 @@ Core concepts
 -------------
 
 Once 2-factor authentication is enabled for a git repository, any write
-operation from an IP address that hasn't been 2-factor validated will be
+operation from ssh session that hasn't been 2-factor validated will be
 rejected with a message like the following::
 
     remote: User not enrolled with 2-factor authentication.
@@ -45,18 +41,34 @@ rejected with a message like the following::
     remote:
     remote: error: hook declined to update refs/heads/master
 
-To allow the push to succeed, you will need to first validate the IP
-address with your 2-factor token, which will allow all pushes from that
-IP address to succeed -- until the validation expires. The default
-expiration time is 24 hours, but you may set it to be as long as 30
-days.
+To allow the push to succeed, you will need to first validate your ssh
+session with your 2-factor token, which will allow all subsequent pushes
+to succeed. Once your ssh controlmaster session is terminated, your
+validation will expire and you will need to re-validate it next time.
 
-Examples::
+Example::
 
     ssh git@gitolite.kernel.org 2fa val XXXXXX
-    ssh git@gitolite.kernel.org 2fa val-for-days 30 XXXXXX
 
 Read operations should be completely unaffected.
+
+SSH configuration
+-----------------
+
+Before you can use this feature, you will need to make sure you enabled
+**ssh multiplexing** in the client, by adding the following entries to
+your gitolite.kernel.org section::
+
+    ControlPath ~/.ssh/cm-%r@%h:%p
+    ControlMaster auto
+    ControlPersist 30m
+
+You can use longer than 30m if desired. To manually terminate your
+session, run::
+
+    ssh -O exit git@gitolite.kernel.org
+
+Please see :doc:`../access` for more ssh setup details.
 
 Supported devices
 -----------------
@@ -139,7 +151,7 @@ This command outputs the following::
         ssh git@gitolite.kernel.org 2fa val [token]
 
     If you need more help, please see the following link:
-        https://korg.wiki.kernel.org/userdoc:gitolite_2fa
+        https://korg.docs.kernel.org/gitolite/2fa.html
 
 .. note:: Please remember to ``unset HISTFILE`` or your secret will be
    stored in your ~/.bash_history.
@@ -185,7 +197,7 @@ The output of the yubikey command is slightly different::
         ssh git@gitolite.kernel.org 2fa val [yubkey button press]
 
     If you need more help, please see the following link:
-        https://korg.wiki.kernel.org/userdoc:gitolite_2fa
+        https://korg.docs.kernel.org/gitolite/2fa.html
 
 **It is important to use ``unset HISTFILE`` to make sure the secret
 isn't saved in your ~/.bash_history.** Additionally, you may also omit
@@ -215,15 +227,16 @@ You should get the following back::
     Compressing objects: 100% (2/2), done.
     Writing objects: 100% (3/3), 308 bytes | 0 bytes/s, done.
     Total 3 (delta 1), reused 0 (delta 0)
-    remote: IP address "x.x.x.x" has not been validated.
     remote: FATAL: W VREF/2fa: testing mricon DENIED by VREF/2fa
     remote: 2-factor verification failed
     remote:
     remote: Please get your 2-factor authentication token and run:
     remote:     ssh git@gitolite.kernel.org 2fa val [token]
     remote:
+    remote: Make sure your ssh is using ControlMaster connections.
+    remote:
     remote: If you need more help, please see the following link:
-    remote:     https://korg.wiki.kernel.org/index.php/Userdoc:gitolite_2fa
+    remote:     https://korg.docs.kernel.org/gitolite/2fa.html
     remote:
     remote: error: hook declined to update refs/heads/mricon
     To git@gitolite.kernel.org:testing
@@ -234,8 +247,6 @@ As instructed, run the following::
 
     $ ssh git@gitolite.kernel.org 2fa val [token]
     Valid TOTP token within window size used
-    Adding IP address x.x.x.x until Wed May 28 20:29:31 2014 UTC
-    GeoIP information for x.x.x.x: Saint-laurent, Quebec, CA
 
 If you now try the push again, it will succeed::
 
@@ -250,59 +261,6 @@ If you now try the push again, it will succeed::
     remote: Writing new /var/lib/gitolite3/repositories/manifest.js.gz
     To git@gitolite.kernel.org:testing
        307ff91..87b27aa  mricon -> mricon
-
-Listing validations and invalidating IPs
-----------------------------------------
-
-To list all allowed validations, run::
-
-    $ ssh git@gitolite.kernel.org 2fa list-val
-    {
-        "172.x.x.x": {
-            "added": "2014-05-27 20:27:44+00:00",
-            "expires": "2014-05-28 20:27:44+00:00"
-        },
-        "24.x.x.x": {
-            "geoip": "Saint-laurent, Quebec, CA",
-            "added": "2014-05-27 20:29:31+00:00",
-            "expires": "2014-05-28 20:29:31+00:00"
-        }
-    }
-    Listed non-expired entries only. Run "list-val all" to list all.
-
-Note: this command only works from a whitelisted IP address.
-
-To invalidate an IP, use the "inval" command, e.g.::
-
-    $ ssh git@gitolite.kernel.org 2fa inval 24.x.x.x
-    Force-expired 24.x.x.x
-
-Instead of the IP address, you may also use ``myip`` to invalidate the
-current IP you're connecting from, or "all" to force-expire all active
-IP validations. If you run ``inval all purge``, this will additionally
-purge all your current and expired entries -- handy if you would like to
-leave no trace of your travel history.
-
-SSH session validation
-----------------------
-
-If you are travelling and happen to be behind a single NAT exit point
-with a lot of other people, it is preferable to validate only your SSH
-session instead of the whole public exit point. This will also help if
-the exit point is not static but changes between tcp sessions (as is
-sometimes common in very large NAT-ed networks).
-
-Before you can use this feature, you will need to make sure you enabled
-**ssh multiplexing** in the client, by adding the following entries to
-your gitolite.kernel.org section::
-
-    ControlPath ~/.ssh/cm-%r@%h:%p
-    ControlMaster auto
-    ControlPersist 30m
-
-You can use longer than 30m if necessary -- the session will be
-validated for up to 8 hours. Please see :doc:`../access` for more
-ssh setup details.
 
 Using in scripts
 ----------------
@@ -334,8 +292,6 @@ can use them to unprovision your current device by using the
     Valid TOTP token used
     Removing the secrets file.
     Cleaning up state files.
-    Expiring all validations.
-    Force-expired 172.0.0.14.
     You have been successfully unenrolled.
 
 You can then use the ``enroll`` command again in order to provision a
@@ -349,5 +305,5 @@ established and followed).
 Requesting 2-factor protection for your repository
 --------------------------------------------------
 
-During this opt-in period, send mail to helpdesk@kernel.org to request
-that your repository is added to the 2fa list.
+Send mail to helpdesk@kernel.org to request that your repository is
+added to the 2fa list.
