@@ -63,7 +63,8 @@ your gitolite.kernel.org section::
     ControlMaster auto
     ControlPersist 30m
 
-You can use longer than 30m if desired. To manually terminate your
+You can use longer than 30m if desired. It will expire automatically or
+whenever your network connection goes away. To manually terminate your
 session, run::
 
     ssh -O exit git@gitolite.kernel.org
