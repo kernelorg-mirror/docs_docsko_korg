@@ -28,6 +28,8 @@ web of trust, your account will be issued without delay.
    the case, please mention it in the request and you'll be issued a new
    ssh private key instead.
 
+   We will also accept a FIDO2 public key. See below for instructions.
+
 .. _`MAINTAINERS`: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS
 
 Creating a PGP key
@@ -45,6 +47,17 @@ attach a copy of your public key to the request. You can generate it
 using the following command::
 
     gpg -a --export [YOURKEYID] > export.asc
+
+Submitting a FIDO2 ssh key
+--------------------------
+If you have a FIDO2 security key, you can include it in your account
+request as a text file signed by your PGP key. To generate this file::
+
+    cat .ssh/id_ed25519_sk.pub | gpg --clearsign > signed-sk-key.txt
+
+Attach ``signed-sk-key.txt`` to the email with your account request.
+
+See :doc:`fido2` for more info.
 
 PGP Web of Trust
 ----------------

@@ -1,11 +1,14 @@
 2-factor authentication with gitolite (deprecated)
 ==================================================
 
-.. warning:: The preferred mechanism for 2-factor authentication is
-   via an SSH key stored on a smartcard device. If you have an account
-   on kernel.org, you qualify for a free nitrokey (see :doc:`../nitrokey`),
-   so we strongly recommend that instead of setting up TOTP/HOTP you
-   switch to using the Nitrokey for your ssh access instead.
+.. warning::
+
+   The preferred mechanism for 2-factor authentication is
+   via an SSH key stored on a smartcard device. See :doc:`../fido2` for
+   instructions on how to set up a FIDO2 device for this purpose.
+
+   If you have an account on kernel.org, you qualify for a free nitrokey
+   (see :doc:`../nitrokey`).
 
 HOTP/TOTP ssh session push validation
 -------------------------------------

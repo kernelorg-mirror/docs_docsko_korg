@@ -12,6 +12,7 @@ Git and related processes
 
    accounts
    access
+   fido2
    gitolite/index
    gitolite/2fa
    gitolite/track_set
