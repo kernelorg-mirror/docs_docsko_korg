@@ -24,27 +24,28 @@ Proprietary options are also available:
 - `Titan Security Key`_
 
 If you do not have any USB-A ports on your system, then you probably
-want to get a USB-C key. You can also use the same device to to access
-any many other accounts online, so you may want to consider getting a
-NFC-capable version so you can use it for authenticating on your phone.
+want to get a USB-C key. You can also use the same device to secure your
+access to many other accounts online, so you may want to consider
+getting a NFC-capable version so you can use it for authenticating with
+services on your smartphone.
 
 .. note::
 
    It is not possible to have two identical FIDO2 devices with the same
    ssh key, so you should consider getting two devices just so you have a
-   backup option and submitting both your primary and backup ssh keys.
+   backup option, and sending in both your primary and backup ssh keys.
 
 .. _`SoloKeys`: https://solokeys.com/
 .. _`Nitrokey 3`: https://shop.nitrokey.com/shop?&search=nitrokey%203
 .. _`Yubikey 5`: https://www.yubico.com/products/yubikey-5-overview/
 .. _`Titan Security Key`: https://store.google.com/product/titan_security_key
 
-Initial device setup
---------------------
+Initial PIN setup
+-----------------
 Before you do anything else, you should set up a PIN on your device. We
 do not recommend using a device without a PIN, because this removes an
 important authentication factor ("something you know") and allows anyone
-in possession of your device to authenticate as you against services.
+in possession of your device to authenticate as you.
 
 You can use the manufacturer's tools (e.g. Yubikey-Manager) to set up a
 PIN for your device, or you can use any Chromium based browser for
@@ -71,30 +72,31 @@ If you set up a PIN on your device, you can leave the passphrase blank.
    It's possible that your device does not support ed25519 cryptography.
    In that case, use ``-t ecdsa-sk``.
 
-Repeat the process for your other device, if you have a backup, and save
-into a different file.
+If you have a backup device, repeat the process and save the keys into a
+different set of files.
 
 Verifying that it works
 -----------------------
 Before you send in your new key, you should make sure that you are able
-to use it for ssh connections. You can add the public key to your
-account and then try to ssh to localhost::
+to use it for ssh connections. You can add the public key to your local
+account and then try to ssh to localhost (assuming you have sshd
+enabled on your workstation)::
 
     cat .ssh/id_ed25519_sk.pub >> .ssh/authorized_keys
     chmod 0600 .ssh/authorized_keys
     ssh -i .ssh/id_ed25519_sk localhost
 
 You should be prompted to enter your PIN, and then touch the device to
-confirm presence.
+confirm physical presence.
 
 If everything is working as expected, you are ready to send in your
-FIDO2 ssh key to us.
+FIDO2 ssh key to the helpdesk.
 
 Submitting your FIDO2 ssh key
 -----------------------------
-We will continue to use PGP to verify your digital identity, so you will
-need to send in your key in a message signed by the PGP key that we have
-on file for you.
+We will continue to use PGP to verify kernel developers' digital
+identity, so you will need to send in your key in a message signed by
+the PGP key that we have on file for you.
 
 This is the easiest mechanism to do so::
 
