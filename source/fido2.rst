@@ -113,6 +113,18 @@ access to a FIDO2 ssh key and attach ``signed_sk_key.txt``.
 If you've made a backup key, send them both as two different
 attachments.
 
+Setting up your FIDO2 key on another computer
+---------------------------------------------
+If you've switched computers, you will need to set up your FIDO2 key
+with openssh on the new system. It is sufficient to insert your FIDO2
+device and run::
+
+    ssh-keygen -K
+
+This will require entering your PIN and touching the device, and will
+write out the private key handle and the public key that you can then
+configure with ssh.
+
 Configuring ssh
 ---------------
-See :doc:`access`_ for details on how to configure your ssh access.
+See :doc:`access` for details on how to configure your ssh access.
