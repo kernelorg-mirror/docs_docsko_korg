@@ -4,6 +4,33 @@ Setting up your ssh access will depend on whether you're using your PGP
 Auth subkey for ssh purposes, a FIDO2 key, or if you were issued a
 private key from kernel.org.
 
+If you sent in your FIDO2 ssh key
+---------------------------------
+You should just need the following in your .ssh/config::
+
+    Host gitolite.kernel.org
+      User git
+      IdentityFile ~/.ssh/id_ed25519_sk
+      # You can specify your backup key as well, if you created one
+      # They will be tried in the order specified
+      #IdentityFile ~/.ssh/id_ed25519_sk_backup
+      # Only use the keys listed above, not any others
+      IdentitiesOnly yes
+      # Don't try to use the ssh agent for PIN-protected cards
+      IdentityAgent none
+      # Don't forward my ssh agent to the remote
+      ClearAllForwardings yes
+      # Establish a persistent connection to avoid constantly having to
+      # re-authenticate with PIN and touch
+      ControlMaster auto
+      # Close the connection after 1H of inactivity (adjust as needed)
+      ControlPersist 1H
+      ControlPath ~/.ssh/cm-%r@%h:%p
+      # Send a null packet every 60 seconds (this helps with many NAT routers)
+      ServerAliveInterval 60
+
+To verify if everything is working, run ``ssh git@gitolite.kernel.org help``.
+
 If you received a ssh private key from kernel.org
 -------------------------------------------------
 Follow this procedure if you received an encrypted tarball containing the SSH
@@ -27,7 +54,6 @@ Add the following entries into your .ssh/config::
       ControlPath ~/.ssh/cm-%r@%h:%p
       ControlMaster auto
       ControlPersist 1H
-      # Helps behind some NAT-ing routers
       ServerAliveInterval 60
 
 If we used your PGP Authentication subkey
@@ -59,35 +85,9 @@ Now add this to your .ssh/config::
       ControlPath ~/.ssh/cm-%r@%h:%p
       ControlMaster auto
       ControlPersist 1H
-      # Helps behind some NAT-ing routers
       ServerAliveInterval 60
 
-To verify if everything is working, run ``ssh git@gitolite.kernel.org
-help``.
-
-If you sent in your FIDO2 ssh key
----------------------------------
-You should just need the following in your .ssh/config::
-
-    Host gitolite.kernel.org
-      User git
-      IdentityFile ~/.ssh/id_ed25519_sk
-      IdentitiesOnly yes
-      ClearAllForwardings yes
-      ControlPath ~/.ssh/cm-%r@%h:%p
-      ControlMaster auto
-      ControlPersist 1H
-      # Helps behind some NAT-ing routers
-      ServerAliveInterval 60
-
-To verify if everything is working, run ``ssh git@gitolite.kernel.org
-help``.
-
-.. note::
-
-   If your FIDO2 device is protected by a PIN, you may get an error
-   saying that "agent refused operation." This can be fixed by adding
-   ``IdentityAgent none`` to the above section.
+To verify if everything is working, run ``ssh git@gitolite.kernel.org help``.
 
 SSH host fingerprints
 ---------------------
