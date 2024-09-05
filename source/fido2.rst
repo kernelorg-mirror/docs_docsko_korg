@@ -84,7 +84,7 @@ enabled on your workstation)::
 
     cat .ssh/id_ed25519_sk.pub >> .ssh/authorized_keys
     chmod 0600 .ssh/authorized_keys
-    ssh -i .ssh/id_ed25519_sk localhost
+    ssh -i .ssh/id_ed25519_sk -o "IdentityAgent none" localhost
 
 You should be prompted to enter your PIN, and then touch the device to
 confirm physical presence.

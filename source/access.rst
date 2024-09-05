@@ -85,6 +85,12 @@ You should just need the following in your .ssh/config::
 To verify if everything is working, run ``ssh git@gitolite.kernel.org
 help``.
 
+.. note::
+
+   If you your FIDO2 device is protected by a PIN, you may get an error
+   saying that "agent refused operation." This can be fixed by adding
+   ``IdentityAgent none`` to the above section.
+
 SSH host fingerprints
 ---------------------
 Your kernel.org account grants you access to gitolite.kernel.org, which
