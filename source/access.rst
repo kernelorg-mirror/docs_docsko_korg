@@ -87,7 +87,7 @@ help``.
 
 .. note::
 
-   If you your FIDO2 device is protected by a PIN, you may get an error
+   If your FIDO2 device is protected by a PIN, you may get an error
    saying that "agent refused operation." This can be fixed by adding
    ``IdentityAgent none`` to the above section.
 
