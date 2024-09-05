@@ -24,7 +24,6 @@ Add the following entries into your .ssh/config::
       IdentityFile ~/.ssh/id_korg
       IdentitiesOnly yes
       ClearAllForwardings yes
-      # Below are very useful for speeding up repeat access
       ControlPath ~/.ssh/cm-%r@%h:%p
       ControlMaster auto
       ControlPersist 1H
@@ -57,8 +56,6 @@ Now add this to your .ssh/config::
     Host gitolite.kernel.org
       User git
       ClearAllForwardings yes
-      HostKeyAlgorithms ssh-ed25519,ecdsa-sha2-nistp256,ssh-rsa
-      # Below are very useful for speeding up repeat access
       ControlPath ~/.ssh/cm-%r@%h:%p
       ControlMaster auto
       ControlPersist 1H
@@ -74,8 +71,9 @@ You should just need the following in your .ssh/config::
 
     Host gitolite.kernel.org
       User git
+      IdentityFile ~/.ssh/id_ed25519_sk
+      IdentitiesOnly yes
       ClearAllForwardings yes
-      HostKeyAlgorithms ssh-ed25519,ecdsa-sha2-nistp256,ssh-rsa
       ControlPath ~/.ssh/cm-%r@%h:%p
       ControlMaster auto
       ControlPersist 1H
