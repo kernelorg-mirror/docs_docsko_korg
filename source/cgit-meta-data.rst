@@ -66,6 +66,16 @@ Full list of allowed options (make sure there are no spaces around
    be cloned via ``git:`` or ``https:`` endpoints if someone knows the
    full path to it.
 
+Preventing auto-hiding of repositories
+--------------------------------------
+
+Repositories that haven't seen any updates in over 3 years will be
+automatically hidden from the main index on git.kernel.org in order to
+make that page more navigable and avoid aggressive over-crawling by
+bots. If you would like to prevent this from happening, create a
+``refs/meta/cgit:cgitrc`` file following instructions above and set
+``hide=0``.
+
 Repo-specific about tab
 -----------------------
 
