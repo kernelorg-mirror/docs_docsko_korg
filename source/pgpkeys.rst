@@ -113,4 +113,8 @@ If you've made any changes to your key, please export it again::
     gpg -a --export your@email.addr > export.asc
 
 Then upload export.asc to https://keys.openpgp.org/upload/. We perform
-weekly updates to pgpkeys.git with the latest key data from keys.openpgp.org.
+periodic updates to pgpkeys.git with the latest key data from keys.openpgp.org.
+
+If the update is urgent, such as when you need to revoke a key or update
+the expiration date on a key that's about to expire, follow the
+"Submitting keys to the keyring" procedure described above.
