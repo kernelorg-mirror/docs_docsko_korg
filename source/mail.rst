@@ -33,7 +33,7 @@ This will produce the following output::
                 smtpserver     = mail.kernel.org
                 smtpserverport = 465
                 smtpencryption = ssl
-                from           = [username]@kernel.org
+                from           = Your Name <[username]@kernel.org>
                 smtpuser       = [username]
                 smtppass       = [randomstring]
 
