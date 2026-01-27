@@ -27,10 +27,14 @@ Email and related
 .. toctree::
    :maxdepth: 1
 
+   email-hosting
+   korgalore
    mail
    remail
    linuxdev
    lore
+   lore-lei
+   lore-archives
 
 Other services
 --------------

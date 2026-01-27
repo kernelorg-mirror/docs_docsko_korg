@@ -25,7 +25,7 @@ Please check that all of the below applies to you:
    git-send-email and IMAP mail clients. **This is NOT a vanity email
    address service** -- it exists to help developers do their work. If you
    really want a vanity address, you can `get a lifetime linux.com
-   forwarding alias`_ for a very reasonable price. Alternatively, Migadu
+   forwarding alias`_ for a reasonable price. Alternatively, Migadu
    will happily host your personal domain for a low annual fee.
 2. **You are listed in the MAINTAINERS file** as a M: (maintainer) or R:
    (reviewer), **OR**
@@ -56,11 +56,10 @@ Please make sure that you're okay with all of the following:
 4. **You will not use this address to subscribe to high-volume mailing
    lists** (LKML, netdev, etc). Migadu applies daily limits on the number
    of incoming and outgoing messages, so violating this request may
-   result in mail being held/throttled for all users of linux.dev. We
-   will be providing alternative ways to "subscribe" to mailing lists
-   hosted on lore.kernel.org in the near future that don't require
-   traditional SMTP delivery (or you can already use a `NNTP reader`_
-   for this purpose).
+   result in mail being held/throttled for all users of linux.dev. For
+   high-volume mailing list content, use :doc:`korgalore` to import
+   messages directly into your inbox, or use a `NNTP reader`_ to access
+   lore.kernel.org archives.
 5. **You need to already have another email address in order to apply for
    this service** -- which is a bit of a chicken and egg situation, but
    it is what it is. This service is not intended to be your primary
@@ -74,9 +73,7 @@ Please make sure that you're okay with all of the following:
 
 How to apply
 ------------
-We are still hashing out a streamlined mechanism for submitting new
-account requests, but for now simply send an email to
-helpdesk@kernel.org using the following pattern::
+Send an email to helpdesk@kernel.org using the following template::
 
     Subject: firstname.lastname@linux.dev account request
 

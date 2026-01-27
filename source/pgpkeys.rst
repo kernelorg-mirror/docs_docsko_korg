@@ -5,7 +5,8 @@ If you regularly contribute code to the Linux kernel, you are encouraged
 to submit your key to be included in the PGP keyring repository. For us
 to be able to accept it, it must have at least one signature from
 someone whose key is already in that repository, so we can trace each
-key's trust lineage to the head maintainer (Linus Torvalds).
+key's trust lineage to the head maintainer (Linus Torvalds). Use the
+:doc:`ksmap` to find developers who can sign your key.
 
 Getting the pgpkeys.git repository
 ----------------------------------

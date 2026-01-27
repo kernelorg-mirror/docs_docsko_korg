@@ -6,6 +6,8 @@ private key from kernel.org.
 
 If you sent in your FIDO2 ssh key
 ---------------------------------
+See :doc:`fido2` for detailed information on setting up FIDO2 keys.
+
 You should just need the following in your .ssh/config::
 
     Host gitolite.kernel.org
@@ -73,7 +75,7 @@ session for the changes to take effect::
     $ bash
     $ ssh-add -L
 
-The very first entry in the output should be the ssh public key derived from
+The first entry in the output should be the ssh public key derived from
 your PGP Auth subkey -- it should have "``cardno:XXXXXXXX``" at the end in the
 comment section.
 

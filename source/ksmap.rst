@@ -1,13 +1,12 @@
 The kernel.org keysigning map
 =============================
-.. warning:: In light of the ongoing COVID-19 pandemic, we encourage
-   everyone to do keysigning using video conferencing instead of
+.. note:: Keysigning via video conference is an acceptable alternative to
    in-person meetings. If you need help organizing a video conference,
    please send an email to keys@kernel.org.
 
-If you need help getting signatures from fellow kernel developers, you
-can look on the keysigning map to see who is available nearby to sign
-your key:
+If you need help getting signatures from fellow kernel developers to
+apply for a :doc:`kernel.org account <accounts>`, you can look on the
+keysigning map to see who is available nearby to sign your key:
 
 * https://www.kernel.org/doc/ksmap/
 

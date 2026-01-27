@@ -2,13 +2,13 @@ How to use gitolite
 ===================
 If you have not yet set up your ssh access, first see :doc:`../access`.
 
-Crash course on using gitolite
+Quick start guide to gitolite
 ------------------------------
 You can find the upstream documentation for gitolite at their website:
 
 * https://github.com/sitaramc/gitolite
 
-But you probably want to read their user doc section:
+You probably want to read their user doc section:
 
 * http://gitolite.com/gitolite/user.html
 

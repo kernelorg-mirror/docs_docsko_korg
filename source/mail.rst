@@ -4,7 +4,8 @@ Using your username@kernel.org alias
 We do not provide mailbox hosting to kernel.org members, but we do
 provide a redirect alias to the address you specified when requesting an
 account. The only other service we offer in addition to the redirect is
-outgoing mail SMTP.
+outgoing mail SMTP. For mailbox hosting recommendations, see
+:doc:`email-hosting`.
 
 Sending outgoing mail
 ---------------------

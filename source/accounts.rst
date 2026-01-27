@@ -73,9 +73,9 @@ email, make sure that your PGP key is signed by *at least two other
 people who already have an active kernel.org account*.
 
 PGP signing events at conferences are usually a good place to start, or
-you can find kernel developers who live in your area. If meeting in
-physical space is not an option for you, read below for the recommended
-video conferencing procedure.
+you can use the :doc:`ksmap` to find kernel developers who live in your
+area. If meeting in physical space is not an option for you, read below
+for the recommended video conferencing procedure.
 
 .. important::
 

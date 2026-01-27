@@ -1,0 +1,29 @@
+CHANGELOG
+=========
+
+2026-01-27
+----------
+- Added Vale prose linting configuration (.vale.ini)
+- Added custom vocabulary for kernel.org technical terms
+- Fixed prose style issues in access.rst, ksmap.rst, linuxdev.rst, lore.rst,
+  gitolite/index.rst
+- Updated ksmap.rst: replaced COVID-19 specific note with general guidance on
+  video conference keysigning
+- Updated wiki.rst: documented that wiki hosting has been discontinued and
+  users should use ReadTheDocs-style documentation sites
+- Updated gitolite/track_set.rst: documented that the track subcommand has
+  been retired since all backend Linux repositories now share objects
+- Updated linuxdev.rst: added application template for linux.dev account
+  requests
+- Added email-hosting.rst: recommended email hosting options for maintainers
+- Added korgalore.rst: documentation for korgalore mailing list import tool
+- Updated linuxdev.rst: added korgalore as recommended alternative for
+  high-volume mailing list content
+- Added cross-references between related documents:
+  - email-hosting, korgalore, linuxdev, mail (email topics)
+  - accounts, ksmap, pgpkeys (PGP/keysigning topics)
+  - access, fido2 (SSH access topics)
+  - lore, korgalore (archive access topics)
+- Reorganized lore.rst: now describes the service with links to public-inbox
+  and korgalore; archive collection instructions moved to lore-archives.rst
+- Added lore-lei.rst: quick start guide for using lei with lore.kernel.org
