@@ -27,3 +27,4 @@ CHANGELOG
 - Reorganized lore.rst: now describes the service with links to public-inbox
   and korgalore; archive collection instructions moved to lore-archives.rst
 - Added lore-lei.rst: quick start guide for using lei with lore.kernel.org
+- Added kernel.org logo
