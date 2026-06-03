@@ -65,8 +65,7 @@ listed in the MAINTAINERS file (as M: or R:), providing a
 firstname.lastname@maintainer.cc address that forwards to your existing
 mailbox. Unlike linux.dev, this does not give you a separate inbox.
 
-See :doc:`maintainercc` for more information. This service is still being
-rolled out.
+See :doc:`maintainercc` for more information.
 
 **Advantages:**
 
@@ -76,8 +75,8 @@ rolled out.
 
 **Disadvantages:**
 
-- Still in early roll-out; the full procedure is not yet finalized
-- Outgoing SMTP support is still being tested
+- Runs on a third-party service controlled by a commercial entity
+  (forwardemail.net), with the cost covered by the Linux Foundation
 - As with any forwarding service, deliverability depends on your final mailbox
 
 Self-hosted with kernel.org address

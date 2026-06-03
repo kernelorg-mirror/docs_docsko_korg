@@ -17,11 +17,13 @@ need or want. It also does not require you to go through the PGP key
 cross-signing process. Compared to a linux.dev account, you continue to use
 your existing mailbox instead of managing a new one.
 
-.. note::
+.. important::
 
-   This service is still being rolled out and the full request procedure is
-   not yet finalized. The instructions below are for the initial roll-out
-   tests. See `Sending outgoing mail`_ for the current status of SMTP support.
+   If you are employed to work on the kernel, check with your employer before
+   using a maintainer.cc address for your work. Some organizations have
+   policies that restrict using a third-party domain for work-related
+   correspondence, and you are responsible for making sure that your use of
+   the address complies with them.
 
 Who qualifies for an address
 ----------------------------
@@ -31,8 +33,8 @@ those used for linux.dev accounts; see :doc:`linuxdev` for the full details.
 
 How to apply
 ------------
-While the service is in its initial roll-out phase, send an email to
-helpdesk@kernel.org using the following template::
+To request an account, send an email to helpdesk@kernel.org using the
+following template::
 
     Subject: firstname.lastname@maintainer.cc account request
 
@@ -57,8 +59,3 @@ Use the following SMTP server details:
 
 After adding the address, your client will usually send a verification message
 to confirm that you control it.
-
-.. note::
-
-   Outgoing SMTP support is still being tested during the initial roll-out.
-   If you run into problems, please report them to helpdesk@kernel.org.
