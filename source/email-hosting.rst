@@ -58,6 +58,28 @@ See :doc:`linuxdev` for more information on applying for an account.
 - You may encounter throttling issues with large mail volumes
 - Outgoing nodes occasionally end up on blocklists, causing bounces
 
+maintainer.cc forwarding
+------------------------
+The Linux Foundation also offers maintainer.cc mail forwarding for anyone
+listed in the MAINTAINERS file (as M: or R:), providing a
+firstname.lastname@maintainer.cc address that forwards to your existing
+mailbox. Unlike linux.dev, this does not give you a separate inbox.
+
+See :doc:`maintainercc` for more information. This service is still being
+rolled out.
+
+**Advantages:**
+
+- Available to any maintainer at no cost
+- Provides a company-independent address without managing a separate inbox
+- Does not require the PGP key cross-signing needed for a kernel.org account
+
+**Disadvantages:**
+
+- Still in early roll-out; the full procedure is not yet finalized
+- Outgoing SMTP support is still being tested
+- As with any forwarding service, deliverability depends on your final mailbox
+
 Self-hosted with kernel.org address
 -----------------------------------
 You can use your kernel.org alias with your own mail server. The server needs

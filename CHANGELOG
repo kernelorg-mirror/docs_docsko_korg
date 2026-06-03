@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+2026-06-03
+----------
+- Added maintainercc.rst: documentation for the new maintainer.cc mail
+  forwarding service for kernel maintainers
+- Updated email-hosting.rst: added maintainer.cc to the list of recommended
+  email options
+- Updated index.rst: added maintainer.cc to the Email and related toctree
+- Updated accounts.rst: cross-referenced maintainer.cc as a lighter-weight,
+  email-only alternative to a kernel.org account
+
 2026-01-27
 ----------
 - Added Vale prose linting configuration (.vale.ini)

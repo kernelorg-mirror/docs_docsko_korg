@@ -32,6 +32,7 @@ Email and related
    mail
    remail
    linuxdev
+   maintainercc
    lore
    lore-lei
    lore-archives

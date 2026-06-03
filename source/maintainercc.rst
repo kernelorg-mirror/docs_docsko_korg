@@ -1,0 +1,64 @@
+maintainer.cc mail forwarding
+=============================
+Many maintainers want a company-independent address for their kernel work, but
+do not want to manage a separate inbox. The maintainer.cc service provides a
+simple mail forwarding address in the form firstname.lastname@maintainer.cc
+that delivers to an existing mailbox of your choice.
+
+This is a third address option offered to kernel maintainers, alongside the
+two described in :doc:`email-hosting`:
+
+- a :doc:`kernel.org account <accounts>`, which also provides mail forwarding;
+- a :doc:`linux.dev account <linuxdev>`, which provides a dedicated inbox.
+
+Compared to a kernel.org account, maintainer.cc is purely an email service: it
+does not include ssh access to git repositories, which many maintainers do not
+need or want. It also does not require you to go through the PGP key
+cross-signing process. Compared to a linux.dev account, you continue to use
+your existing mailbox instead of managing a new one.
+
+.. note::
+
+   This service is still being rolled out and the full request procedure is
+   not yet finalized. The instructions below are for the initial roll-out
+   tests. See `Sending outgoing mail`_ for the current status of SMTP support.
+
+Who qualifies for an address
+----------------------------
+Anyone listed in the MAINTAINERS file as a M: (maintainer) or R: (reviewer)
+qualifies for a maintainer.cc address. The qualification rules are similar to
+those used for linux.dev accounts; see :doc:`linuxdev` for the full details.
+
+How to apply
+------------
+While the service is in its initial roll-out phase, send an email to
+helpdesk@kernel.org using the following template::
+
+    Subject: firstname.lastname@maintainer.cc account request
+
+    Full name: [Firstname Lastname]
+    Forwarding address: [foo@example.org]
+
+Sending outgoing mail
+---------------------
+You can also send outgoing mail from your maintainer.cc address by configuring
+your mail client to use the SMTP server below. The exact steps vary between
+clients, but the settings are the same. For example, in a webmail provider
+such as Gmail you would add the address under a "Send mail as" setting; in a
+desktop client you would add it as an outgoing (SMTP) account.
+
+Use the following SMTP server details:
+
+- **SMTP server:** smtp.forwardemail.net
+- **Port:** 465
+- **Connection security:** SSL/TLS
+- **Username:** your full maintainer.cc email address
+- **Password:** the password you received when your account was created
+
+After adding the address, your client will usually send a verification message
+to confirm that you control it.
+
+.. note::
+
+   Outgoing SMTP support is still being tested during the initial roll-out.
+   If you run into problems, please report them to helpdesk@kernel.org.

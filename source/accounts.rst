@@ -2,8 +2,16 @@ Getting a kernel.org account
 ============================
 Kernel.org accounts are reserved for Linux kernel maintainers or
 high-profile developers. If you do not fall under one of these two
-categories, it's unlikely that an account will be issued to you. If you
-would like to apply for an account, please e-mail the following
+categories, it's unlikely that an account will be issued to you.
+
+.. tip::
+
+   A kernel.org account also grants ssh access to git repositories and
+   requires PGP key cross-signing. If you only want a company-independent
+   forwarding address and do not need git access, see :doc:`maintainercc`
+   for a lighter-weight alternative.
+
+If you would like to apply for an account, please e-mail the following
 information to helpdesk@kernel.org using the following template::
 
     Subject: Account request for [your name here]
