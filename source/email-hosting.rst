@@ -34,6 +34,12 @@ free option, but costs approximately 100 USD per year with a .net domain.
 - Their server stack is largely proprietary, though they open-source parts of
   their software
 
+**Alternative providers:**
+
+- https://mailbox.org/ (EU hosted)
+- https://migadu.com/ (EU hosted)
+- https://purelymail.com/
+
 linux.dev hosting
 -----------------
 The Linux Foundation offers linux.dev mailbox hosting for anyone listed in the
