@@ -91,6 +91,32 @@ Now add this to your .ssh/config::
 
 To verify if everything is working, run ``ssh git@gitolite.kernel.org help``.
 
+Connecting from networks that block port 22
+-------------------------------------------
+If you are on a network that blocks outbound port 22 and running a VPN is not
+an option, gitolite.kernel.org also listens on ports **2222** and **443**.
+
+Try port 2222 first by adding a ``Port`` directive to your
+``~/.ssh/config`` entry::
+
+    Host gitolite.kernel.org
+      User git
+      Port 2222
+      ...
+
+If port 2222 is also blocked, you can try port 443::
+
+    Host gitolite.kernel.org
+      User git
+      Port 443
+      ...
+
+.. note::
+   Port 443 may not work reliably on networks that use deep packet inspection.
+   Such networks can detect SSH traffic arriving on the HTTPS port and block
+   the connection. If that happens, using a VPN that obfuscates its traffic
+   may be your only option.
+
 SSH host fingerprints
 ---------------------
 Your kernel.org account grants you access to gitolite.kernel.org, which
