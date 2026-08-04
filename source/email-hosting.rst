@@ -27,10 +27,15 @@ free option, but costs approximately 100 USD per year with a .net domain.
   direct use of your kernel.org alias
 - JMAP support is available; lei/korgalore support uploading messages to your
   inbox with JMAP, which is faster and more reliable than Gmail or IMAP
+- Since 2026, you can choose to have your primary mail stored on servers in
+  Amsterdam instead of the US, which may be preferable for EU-based users
 
 **Disadvantages:**
 
-- Fastmail is an Australian company with servers in the US
+- Fastmail is an Australian company; account data lives on either US
+  (Philadelphia/St. Louis) or EU (Amsterdam) servers depending on your chosen
+  data region, but backups and some metadata are replicated across both
+  regions regardless, so this is not a guarantee of EU-only storage
 - Their server stack is largely proprietary, though they open-source parts of
   their software
 
@@ -39,6 +44,12 @@ free option, but costs approximately 100 USD per year with a .net domain.
 - https://mailbox.org/ (EU hosted)
 - https://migadu.com/ (EU hosted)
 - https://purelymail.com/
+
+.. note::
+
+   Fastmail's EU data region (see the preceding section) now makes it a
+   suitable choice for EU-based users as well, so picking one of these
+   alternatives is no longer necessary purely for EU hosting reasons.
 
 linux.dev hosting
 -----------------
