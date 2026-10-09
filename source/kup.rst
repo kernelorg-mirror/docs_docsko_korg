@@ -26,7 +26,7 @@ Kup is packaged for most distributions and is probably installable using
 your distribution's package management tools. For example, on Fedora it
 is installable using::
 
-    yum install kup
+    dnf install kup
 
 .. note:: Make sure the version of kup is at least 0.3.6, as earlier
    versions will NOT work.
@@ -34,7 +34,7 @@ is installable using::
 You can also check out the git tree to obtain the latest version of
 kup::
 
-    git clone git://git.kernel.org/pub/scm/utils/kup/kup.git
+    git clone https://git.kernel.org/pub/scm/utils/kup/kup.git
 
 Configuring kup
 ---------------
@@ -49,7 +49,7 @@ That should be all you need to do. You may test things by running::
 
 You should see the following or similar output::
 
-    kup-server 0.3.6 (gitolite integrated)
+    kup-server 0.4.0
 
     ls                       /*
     put/rm/mv/mkdir          /testing/*
@@ -75,17 +75,31 @@ You can test kup by uploading into the special ``/testing`` directory::
 
     kup put foo.tar foo.tar.asc /testing/foo.tar.gz
 
-If you get "invalid signature", the most likely cause is that your
-signature is against the compressed version of the archive. KUP expects
-the signature to be against .tar, not .tar.?z. It uncompresses the file,
-then runs the verification check, then recompresses in multiple formats.
-
 Please remove anything you put there after you are done::
 
     kup rm /testing/foo.tar.gz
 
-Anything uploaded to ''/pub'' will be rsynced to kernel.org frontends
-and will be available on http://kernel.org/pub after a few minutes.
+The most likely cause of a "Signature invalid" error is that your
+signature is against the compressed version of the archive. KUP expects
+the signature to be against .tar, not .tar.?z. It uncompresses the file,
+then runs the verification check, then recompresses in multiple formats.
+
+The other common cause is an expired key. The server checks your
+signature against the copy of your key in the kernel.org keyring, so if your key
+has expired there, uploads signed with it are refused, even if you have
+already extended it locally. Send your updated public key to
+helpdesk@kernel.org so that the kernel.org keyring gets the new expiry
+date. Revoked keys are refused as well.
+
+Path names may only use ASCII letters and digits, spaces, and the
+characters ``- . _ @ / + : ,``. Anything else, including non-ASCII
+letters, is refused with a "Permission denied" error.
+
+Since kup 0.4.0, kup exits with a non-zero status when an upload fails,
+so scripts can rely on it.
+
+Anything uploaded to ``/pub`` will be rsynced to kernel.org frontends
+and will be available on https://kernel.org/pub after a few minutes.
 
 Permissions
 -----------
@@ -116,5 +130,9 @@ To start using this method:
 
 4. The backend job runs every 5 minutes and you will get a notification
    by email if your job has succeeded or failed.
+
+The same checks apply as for direct uploads: if your key has expired in
+the kernel.org keyring, publishing fails until the keyring has your new
+expiry date.
 
 .. _git-archive-signer: https://git.kernel.org/pub/scm/linux/kernel/git/mricon/korg-helpers.git/plain/git-archive-signer
