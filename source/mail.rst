@@ -159,3 +159,16 @@ subscribing to mailing lists. E.g.:
 * username+lkml@kernel.org
 
 They will be correctly delivered to your forwarding address.
+
+By default, the ``+topic`` part is dropped when we forward the message,
+so mail for ``username+lkml@kernel.org`` arrives at ``you@example.com``.
+If your mail provider also supports ``+topic`` addresses, you can ask us
+to keep it, so the same message arrives at ``you+lkml@example.com``::
+
+    ssh git@gitolite.kernel.org mailforward keepext you@example.com
+
+This only changes the destination you name, so you can keep ``+topic``
+for one forwarding address and not for another. To go back to the
+default::
+
+    ssh git@gitolite.kernel.org mailforward dropext you@example.com
