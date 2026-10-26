@@ -119,3 +119,114 @@ periodic updates to pgpkeys.git with the latest key data from keys.openpgp.org.
 If the update is urgent, such as when you need to revoke a key or update
 the expiration date on a key that's about to expire, follow the
 "Submitting keys to the keyring" procedure described above.
+
+.. _extend-expiration:
+
+Extending your key's expiration date
+------------------------------------
+
+Most OpenPGP keys have an expiration date. After that date, tools like
+git, b4 and sq no longer accept signatures made with the key. If you
+have a kernel.org account, we send a reminder to your kernel.org address
+30, 10 and 3 days before your key in the kernel.org keyring expires.
+
+Extending the date is quick, and you can do it as many times as you
+like. You don't need a new key, and nobody needs to sign your key again.
+
+Find your key fingerprint
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The reminder email shows your key fingerprint. You can also find it with
+``gpg``:
+
+.. code-block:: console
+
+    $ gpg --list-secret-keys your@email.addr
+    sec#  ed25519 2022-12-20 [C] [expires: 2026-12-19]
+          000000000000000000000000AAAABBBBCCCCDDDD
+    uid           [ultimate] Alice Dev <adev@kernel.org>
+    ssb>  cv25519 2022-12-20 [E] [expires: 2026-12-19]
+    ssb>  ed25519 2022-12-20 [S] [expires: 2026-12-19]
+
+The long line under ``sec`` is the fingerprint. In the commands below,
+replace ``[fpr]`` with it.
+
+Make your Certify key available
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You need your Certify key to change the expiration date. If ``gpg``
+shows ``sec#`` instead of ``sec``, the Certify key isn't on this
+computer. If you followed the `Kernel Maintainer PGP guide`_, you keep
+it on your offline storage. Mount it and tell GnuPG to use it:
+
+.. code-block:: console
+
+    $ export GNUPGHOME=/media/disk/foo/gnupg-backup
+    $ gpg --list-secret-keys
+
+Make sure that you now see ``sec`` and not ``sec#``.
+
+Extend the expiration date
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Extend the main key, then its subkeys:
+
+.. code-block:: console
+
+    $ gpg --quick-set-expire [fpr] 2y
+    $ gpg --quick-set-expire [fpr] 2y '*'
+
+You need both commands. Your signing subkey can expire before your main
+key does, and then you can't sign with your key, even though the main
+key is still valid.
+
+Instead of ``2y`` (two years from today), you can also use a specific
+date that is easy to remember, such as ``2028-07-01``.
+
+The ``'*'`` only changes subkeys that haven't expired yet, so it leaves
+old subkeys alone. If your signing subkey has already expired, name it
+by its fingerprint instead of ``'*'``. You can see the fingerprints of
+your subkeys with ``gpg --list-keys --with-subkey-fingerprints [fpr]``:
+
+.. code-block:: console
+
+    $ gpg --quick-set-expire [fpr] 2y [subkey-fpr]
+
+These commands also repair keys with SHA-1 self-signatures, which sq
+rejects. GnuPG makes the new self-signatures with a modern hash, and
+they replace the old ones. For this to work, use a recent version of
+GnuPG, and make sure that your ``gpg.conf`` does not set
+``cert-digest-algo SHA1``.
+
+If you used your offline storage, copy the changes back to your
+everyday GnuPG directory, then unmount the storage:
+
+.. code-block:: console
+
+    $ gpg --export | gpg --homedir ~/.gnupg --import
+    $ unset GNUPGHOME
+
+Send us your updated key
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Export your public key:
+
+.. code-block:: console
+
+    $ gpg -a --export [fpr] > export.asc
+
+Upload ``export.asc`` to https://keys.openpgp.org/upload/, so that others
+can get the new date too. Then send it to us in one of these ways:
+
+- Reply to the reminder email with ``export.asc`` attached.
+- Send a new message to keys@linux.kernel.org with ``export.asc``
+  attached.
+
+Both go to keys@linux.kernel.org, a public mailing list archived at
+https://lore.kernel.org/keys/. Only send your public key and nothing
+that you want to keep private.
+
+Please send your key at least a few days before it expires. We add
+updated keys to the keyring by hand, so this can take a few days.
+
+.. _`Kernel Maintainer PGP guide`: https://docs.kernel.org/process/maintainer-pgp-guide.html

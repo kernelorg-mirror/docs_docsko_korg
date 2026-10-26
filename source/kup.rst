@@ -87,9 +87,9 @@ then runs the verification check, then recompresses in multiple formats.
 The other common cause is an expired key. The server checks your
 signature against the copy of your key in the kernel.org keyring, so if your key
 has expired there, uploads signed with it are refused, even if you have
-already extended it locally. Send your updated public key to
-helpdesk@kernel.org so that the kernel.org keyring gets the new expiry
-date. Revoked keys are refused as well.
+already extended it locally. Send your updated public key to the
+kernel.org keyring as described in :ref:`extend-expiration`. Revoked
+keys are refused as well.
 
 Path names may only use ASCII letters and digits, spaces, and the
 characters ``- . _ @ / + : ,``. Anything else, including non-ASCII
