@@ -130,6 +130,9 @@ git, b4 and sq no longer accept signatures made with the key. If you
 have a kernel.org account, we send a reminder to your kernel.org address
 30, 10 and 3 days before your key in the kernel.org keyring expires.
 
+If you have a kernel.org account, keeping your key valid is also what
+keeps your ssh access working, see :ref:`keeping-your-account-active`.
+
 Extending the date is quick, and you can do it as many times as you
 like. You don't need a new key, and nobody needs to sign your key again.
 

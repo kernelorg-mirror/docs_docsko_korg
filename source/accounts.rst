@@ -144,3 +144,22 @@ Procedure for the signers
 7. Export the signed key using ``gpg --export -a -o signed.asc
    their@address``.
 8. Send the signed key back to the signee via email.
+
+.. _keeping-your-account-active:
+
+Keeping your account active
+---------------------------
+To keep ssh access to kernel.org, the PGP key on record for your account
+must stay valid: it must not expire or be revoked, and it must remain in
+the :doc:`kernel.org keyring <pgpkeys>`. If your key expires, your ssh
+access may be suspended until you send us an updated key.
+
+We send alerts to your kernel.org account 30, 10 and 3 days before your
+key expires. Extending the expiration date takes a few minutes and does
+not require new signatures, see :ref:`extend-expiration`.
+
+If you switch to a new key, it has the same signature requirements as a
+key for a new account: it must be signed by at least two people who
+already have an active kernel.org account (see `PGP Web of Trust`_).
+Send your new public key to keys@kernel.org so it can be updated on your
+account. Please note that keys@kernel.org is a publicly archived list.
