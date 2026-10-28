@@ -176,15 +176,15 @@ Extend the main key, then its subkeys:
 
 .. code-block:: console
 
-    $ gpg --quick-set-expire [fpr] 2y
-    $ gpg --quick-set-expire [fpr] 2y '*'
+    $ gpg --quick-set-expire [fpr] 5y
+    $ gpg --quick-set-expire [fpr] 5y '*'
 
 You need both commands. Your signing subkey can expire before your main
 key does, and then you can't sign with your key, even though the main
 key is still valid.
 
-Instead of ``2y`` (two years from today), you can also use a specific
-date that is easy to remember, such as ``2028-07-01``.
+Instead of ``5y`` (five years from today), you can also use a specific
+date that is easy to remember, such as ``2031-07-01``.
 
 The ``'*'`` only changes subkeys that haven't expired yet, so it leaves
 old subkeys alone. If your signing subkey has already expired, name it
@@ -193,7 +193,7 @@ your subkeys with ``gpg --list-keys --with-subkey-fingerprints [fpr]``:
 
 .. code-block:: console
 
-    $ gpg --quick-set-expire [fpr] 2y [subkey-fpr]
+    $ gpg --quick-set-expire [fpr] 5y [subkey-fpr]
 
 These commands also repair keys with SHA-1 self-signatures, which sq
 rejects. GnuPG makes the new self-signatures with a modern hash, and
